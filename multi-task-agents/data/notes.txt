@@ -1,0 +1,2 @@
+Provide a detailed description of the project architecture and structure following the user's example format
+Key features of the software solution provided in the <sol> tag: Mechanic Profiles, Job Posting, Matching Algorithm, Communication Tools, Payment Integration

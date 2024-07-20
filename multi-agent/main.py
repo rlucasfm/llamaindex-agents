@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from llama_index.llms.openai import OpenAI
-from llama_index.agent.openai_legacy import FnRetrieverOpenAIAgent
+from llama_index.agent.openai import OpenAIAgent
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.objects import ObjectIndex, SimpleToolNodeMapping
 from agents import market_analyst, strategy_planner, creative_content_creator, photographer_agent, reviewer_agent
@@ -36,10 +36,10 @@ obj_index = ObjectIndex.from_objects(
 
 retriever = obj_index.as_retriever()
 
-top_agent = FnRetrieverOpenAIAgent.from_retriever(
-    retriever,
+top_agent = OpenAIAgent.from_tools(
+    tool_retriever=retriever,
     system_prompt=""" \
-        You are a top-level agent designed to choose the most appropriate agent of the 5 agents provided in the object index based on the user query and use the appropriate agent to answer queries about freight and cars.
+        You are a top-level agent designed to choose the most appropriate agent of the 5 agents provided in the object index based on the user query and use the appropriate agent to answer queries.
         Please ALWAYS choose the approprate agents among the 5 provided based on the user query to answer a question. Do NOT rely on prior knowledge.\
 
     """,

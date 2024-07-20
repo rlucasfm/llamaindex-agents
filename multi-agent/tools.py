@@ -1,6 +1,5 @@
 from llama_index.tools.duckduckgo import DuckDuckGoSearchToolSpec
 from llama_index.core.tools import FunctionTool
-from llama_index.agent.openai import OpenAIAgent
 
 ## Internet search Tool
 def internet_search(query: str):
